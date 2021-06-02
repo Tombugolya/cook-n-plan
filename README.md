@@ -3,27 +3,20 @@
 
 * [Yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable)
 * [Node.js](https://nodejs.org/en/download/)
+* [Expo](https://docs.expo.io/get-started/installation/)
 
 
 ## Installation
 Clone this repo using:
-```bash
-git clone https://github.com/Tombugolya/cook-n-plan.git
-```
+####`git clone https://github.com/Tombugolya/cook-n-plan.git`
 Install the dependencies using:
-```bash
-yarn install
-```
+
+####`yarn install`
+
 
 ## Scripts
-### `yarn start`
+### `expo start`
 
-Runs the app in the development mode.\
-Open https://localhost:3000 to view it in the browser.
+Starts Metro Bundler, which is an HTTP server that compiles the JavaScript code using Babel and serves it to the Expo app.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-
-### `yarn deploy`
-Builds, minifies and deploys the app to https://tombugolya.github.io/cook-n-plan.
+It also pops up Expo Dev Tools, a graphical interface for Expo CLI.

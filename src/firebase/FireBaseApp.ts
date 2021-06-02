@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import Auth from './Auth'
 import Database from './Database'
 
