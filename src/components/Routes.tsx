@@ -1,7 +1,6 @@
 import React from 'react'
 import MainPage from './MainPage/MainPage'
-import GlobalStyles from '../style/GlobalStyles'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-native'
 
 const Routes = () => {
   return (
@@ -11,7 +10,6 @@ const Routes = () => {
           <MainPage />
         </Route>
       </Switch>
-      <GlobalStyles />
     </React.Fragment>
   )
 }
