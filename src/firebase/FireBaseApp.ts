@@ -6,7 +6,11 @@ export interface UserCredentials {
 }
 
 class FireBaseApp {
-  private readonly config = {
+  public readonly name = "Cook N' Plan"
+  readonly #app: firebase.app.App
+  readonly #auth: firebase.auth.Auth
+  readonly #database: firebase.firestore.Firestore
+  readonly #config = {
     apiKey: 'AIzaSyCtnkJzP_S0ELAnS-OLvvQl3hJsOfPmlAE',
     authDomain: 'cook-n-plan.firebaseapp.com',
     projectId: 'cook-n-plan',
@@ -14,13 +18,9 @@ class FireBaseApp {
     messagingSenderId: '914265389121',
     appId: '1:914265389121:web:9a3312431fd5bc56b72ec0',
   }
-  public readonly name = "Cook N' Plan"
-  readonly #app: firebase.app.App
-  readonly #auth: firebase.auth.Auth
-  readonly #database: firebase.firestore.Firestore
 
   constructor() {
-    this.#app = firebase.initializeApp(this.config, this.name)
+    this.#app = firebase.initializeApp(this.#config, this.name)
     this.#auth = this.#app.auth()
     this.#database = this.#app.firestore()
   }
