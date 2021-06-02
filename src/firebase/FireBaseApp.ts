@@ -1,4 +1,6 @@
 import firebase from 'firebase'
+import Auth from './Auth'
+import Database from './Database'
 
 export interface UserCredentials {
   email: string
@@ -8,8 +10,8 @@ export interface UserCredentials {
 class FireBaseApp {
   public readonly name = "Cook N' Plan"
   readonly #app: firebase.app.App
-  readonly #auth: firebase.auth.Auth
-  readonly #database: firebase.firestore.Firestore
+  readonly #auth: Auth
+  readonly #database: Database
   readonly #config = {
     apiKey: 'AIzaSyCtnkJzP_S0ELAnS-OLvvQl3hJsOfPmlAE',
     authDomain: 'cook-n-plan.firebaseapp.com',
@@ -21,34 +23,13 @@ class FireBaseApp {
 
   constructor() {
     this.#app = firebase.initializeApp(this.#config, this.name)
-    this.#auth = this.#app.auth()
-    this.#database = this.#app.firestore()
+    this.#auth = new Auth(this.#app)
+    this.#database = new Database(this.#app)
   }
 
-  public signUp = ({ email, password }: UserCredentials) => {
-    this.#auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // New user flow
-        console.log(userCredential.user)
-      })
-  }
-
-  public signIn = ({ email, password }: UserCredentials) => {
-    this.#auth
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Log in flow
-        console.log(userCredential.user)
-      })
-  }
-
-  public signOut = () => {
-    this.#auth.signOut().then(() => {
-      // Sign out flow
-      console.log('Sign out flow')
-    })
-  }
+  public signUp = (cred: UserCredentials) => this.#auth.signUp(cred)
+  public signIn = (cred: UserCredentials) => this.#auth.signIn(cred)
+  public signOut = () => this.#auth.signOut()
 }
 
 export default new FireBaseApp()
