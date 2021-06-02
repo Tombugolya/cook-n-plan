@@ -1,8 +1,14 @@
 import React from 'react'
 import FireBase from '../../firebase/FireBaseApp'
+import Signup from './Signup'
 
 const MainPage = () => {
-  return <h1>{JSON.stringify(FireBase.name)}</h1>
+  return (
+    <div>
+      <h1>{JSON.stringify(FireBase.name)}</h1>
+      <Signup />
+    </div>
+  )
 }
 
 export default MainPage
