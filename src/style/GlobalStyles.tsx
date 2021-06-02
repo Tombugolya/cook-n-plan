@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+// eslint-disable-next-line
 import { jsx, css, Global } from '@emotion/react'
 
 const globalStyles = css`

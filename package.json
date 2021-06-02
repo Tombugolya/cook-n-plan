@@ -3,15 +3,17 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build --stats && webpack-bundle-analyzer build/bundle-stats.json -m static -r build/bundle-stats.html -O",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.4",
     "@types/react-router-dom": "^5.1.7",
     "husky": "^6.0.0",
     "prettier": "^2.3.0",
-    "pretty-quick": "^3.1.0"
+    "pretty-quick": "^3.1.0",
+    "webpack-bundle-analyzer": "^4.4.2"
   },
   "dependencies": {
     "@emotion/react": "^11.4.0",
@@ -22,7 +24,9 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "firebase": "^8.6.3",
     "gh-pages": "^3.2.0",
+    "lodash-es": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
@@ -46,6 +50,12 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
     ]
   }
 }
