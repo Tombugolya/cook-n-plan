@@ -8,10 +8,11 @@
 
 ## Installation
 Clone this repo using:
-####`git clone https://github.com/Tombugolya/cook-n-plan.git`
+
+#### `git clone https://github.com/Tombugolya/cook-n-plan.git`
 Install the dependencies using:
 
-####`yarn install`
+#### `yarn install`
 
 
 ## Scripts
