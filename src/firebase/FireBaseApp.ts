@@ -1,6 +1,6 @@
 import firebase from 'firebase/app'
 import Auth from './Auth'
-import Database, { DataWriteProps } from './Database'
+import Database, { Collections, DataWriteProps } from './Database'
 
 class FireBaseApp {
   public readonly name = "Cook N' Plan"
@@ -27,6 +27,16 @@ class FireBaseApp {
   public signOut = () => this.#auth.signOut()
   public write = (data: DataWriteProps) => this.#database.write(data)
   public getDoc = (data: DataWriteProps) => this.#database.getDoc(data)
+  public getUserData = () => {
+    const user = this.#auth.getUser()
+    if (!user) return null
+    return this.getDoc({
+      collection: Collections.USERS,
+      data: {
+        id: user.uid,
+      },
+    })
+  }
 }
 
 export interface UserCredentials {

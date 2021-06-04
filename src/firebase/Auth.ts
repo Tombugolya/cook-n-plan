@@ -53,6 +53,12 @@ export default class Auth {
       .catch(this.errorHandlers.signOut)
   }
 
+  public getUser(): firebase.User | null {
+    let user: firebase.User | null = null
+    this.#auth.onAuthStateChanged((val) => (user = val))
+    return user
+  }
+
   private errorHandlers = {
     signUp: (err: Event) => console.log(err),
     signIn: (err: Event) => console.log(err),
