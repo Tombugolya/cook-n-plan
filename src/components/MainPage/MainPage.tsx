@@ -1,6 +1,6 @@
 import React from 'react'
 import FireBaseApp from '../../firebase/FireBaseApp'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { Link } from 'react-router-native'
 
 const styles = StyleSheet.create({

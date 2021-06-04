@@ -6,8 +6,8 @@ import { Link } from 'react-router-native'
 import FireBaseApp from '../../firebase/FireBaseApp'
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
   const onLoginPress = () => FireBaseApp.signIn({ email, password })
 
   return (
@@ -22,7 +22,7 @@ const LoginPage = () => {
         />
         <TextInput
           style={styles.input}
-          placeholder="E-mail"
+          placeholder="Email"
           placeholderTextColor="#aaaaaa"
           onChangeText={(text) => setEmail(text)}
           value={email}

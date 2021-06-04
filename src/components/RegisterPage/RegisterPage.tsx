@@ -6,16 +6,16 @@ import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { Link } from 'react-router-native'
 
 const RegisterPage = () => {
-  const [fullName, setFullName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [fullName, setFullName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [confirmPassword, setConfirmPassword] = useState<string>('')
   const onRegisterPress = () => {
     if (password !== confirmPassword) {
       alert("Password don't match")
       return
     }
-    FireBaseApp.signUp({ email, password })
+    FireBaseApp.signUp({ email, password, fullName })
   }
 
   return (
@@ -39,7 +39,7 @@ const RegisterPage = () => {
         />
         <TextInput
           style={styles.input}
-          placeholder="E-mail"
+          placeholder="Email"
           placeholderTextColor="#aaaaaa"
           onChangeText={(text) => setEmail(text)}
           value={email}
