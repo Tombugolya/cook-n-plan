@@ -18,8 +18,8 @@ class FireBaseApp {
 
   constructor() {
     this.#app = firebase.initializeApp(this.#config, this.name)
-    this.#auth = new Auth(this.#app)
     this.#database = new Database(this.#app)
+    this.#auth = new Auth(this.#app, this.#database)
   }
 
   public signUp = (cred: UserInfo) => this.#auth.signUp(cred)

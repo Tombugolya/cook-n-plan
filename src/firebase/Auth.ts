@@ -1,13 +1,14 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import FireBaseApp, { UserCredentials, UserInfo } from './FireBaseApp'
-import { Collections, UserData } from './Database'
+import Database, { Collections, UserData } from './Database'
+import { UserCredentials, UserInfo } from './FireBaseApp'
 
 export default class Auth {
   readonly #auth: firebase.auth.Auth
-
-  constructor(app: firebase.app.App) {
+  readonly #db: Database
+  constructor(app: firebase.app.App, db: Database) {
     this.#auth = app.auth()
+    this.#db = db
   }
 
   public signUp = ({ email, password, fullName }: UserInfo) => {
@@ -19,7 +20,7 @@ export default class Auth {
         const id = userCredential.user!.uid
         const collection: Collections = Collections.USERS
         const data: UserData = { id, email, fullName }
-        FireBaseApp.write({ collection, data })
+        this.#db.write({ collection, data })
       })
       .catch(this.errorHandlers.signUp)
   }
@@ -32,7 +33,8 @@ export default class Auth {
         console.log(userCredential.user)
         const id = userCredential.user!.uid
         const collection: Collections = Collections.USERS
-        FireBaseApp.getDoc({ collection, data: { id } })
+        this.#db
+          .getDoc({ collection, data: { id } })
           .then((doc) => {
             if (!doc.exists) return
             const user = doc.data()
