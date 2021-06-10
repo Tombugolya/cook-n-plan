@@ -22,8 +22,8 @@ const MainPage = () => {
   return (
     <View style={styles.container}>
       <Text h1>{FireBaseApp.name}</Text>
-      <Link to="/login">
-        <Text style={styles.a}>Login</Text>
+      <Link component={Text} style={styles.a} to="/login">
+        Login
       </Link>
     </View>
   )

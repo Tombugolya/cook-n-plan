@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
-    width: '50%',
+    width: '60%',
     alignItems: 'center',
     backgroundColor: '#ecece4',
   },

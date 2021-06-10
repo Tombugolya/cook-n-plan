@@ -72,8 +72,8 @@ const RegisterPage = () => {
           <View style={styles.footerView}>
             <Text>
               Already got an account?{' '}
-              <Link to="/login">
-                <Text style={styles.footerLink}>Log in</Text>
+              <Link component={Text} style={styles.footerLink} to="/login">
+                Log in
               </Link>
             </Text>
           </View>

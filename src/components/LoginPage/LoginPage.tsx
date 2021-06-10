@@ -46,8 +46,8 @@ const LoginPage = () => {
           <View style={styles.footerView}>
             <Text>
               Don't have an account?{' '}
-              <Link to="/register">
-                <Text style={styles.footerLink}>Sign up</Text>
+              <Link component={Text} style={styles.footerLink} to="/register">
+                Sign up
               </Link>
             </Text>
           </View>

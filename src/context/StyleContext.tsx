@@ -16,10 +16,6 @@ const theme: Theme = {
   Input: {
     leftIcon: {
       color: '#6cc166',
-      size: 26,
-    },
-    leftIconContainerStyle: {
-      width: '3%',
     },
   },
   Text: {
