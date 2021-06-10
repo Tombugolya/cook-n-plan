@@ -1,36 +1,49 @@
 import React, { createContext, FC, ReactNode, useState } from 'react'
+import { Theme, ThemeProvider } from 'react-native-elements'
 
-type TStyleContextProvider = FC<{ children: ReactNode }>
-interface StyleState {
+const theme: Theme = {
   colors: {
-    primary: string
-    secondary: string
-  }
-}
-interface TStyleContext {
-  style: StyleState
-  setStyle: (val: StyleState) => void
-}
-
-export const StyleContext = createContext<TStyleContext>(null)
-
-export const StyleContextProvider: TStyleContextProvider = ({ children }) => {
-  const [style, setStyle] = useState<StyleState>({
-    colors: {
-      primary: '#6cc166',
-      secondary: '#ecece4',
+    primary: '#6cc166',
+    secondary: '#ecece4',
+  },
+  Button: {
+    containerStyle: {
+      width: 120,
     },
-  })
+    title: 'Button!',
+    raised: true,
+  },
+  Input: {
+    leftIcon: {
+      color: '#6cc166',
+      size: 26,
+    },
+    leftIconContainerStyle: {
+      width: '3%',
+    },
+  },
+  Text: {
+    style: {
+      fontSize: 16,
+      color: '#2e2e2d',
+    },
+  },
+}
+export const ThemeContext = createContext<TThemeContext>(null)
+export const StyleContextProvider: TStyleContextProvider = ({ children }) => {
+  const [darkMode, setDarkMode] = useState<boolean>(false)
   return (
-    <StyleContext.Provider
-      value={{
-        style,
-        setStyle,
-      }}
-    >
-      {children}
-    </StyleContext.Provider>
+    <ThemeProvider theme={theme} useDark={darkMode}>
+      <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+        {children}
+      </ThemeContext.Provider>
+    </ThemeProvider>
   )
 }
 
+type TStyleContextProvider = FC<{ children: ReactNode }>
+interface TThemeContext {
+  darkMode: boolean
+  setDarkMode: (val: boolean) => void
+}
 export default StyleContextProvider

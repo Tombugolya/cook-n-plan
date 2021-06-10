@@ -1,28 +1,27 @@
 import React from 'react'
 import FireBaseApp from '../../firebase/FireBaseApp'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import { Text } from 'react-native-elements'
+
 import { Link } from 'react-router-native'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ecece4',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  h1: {
-    fontSize: 32,
-  },
   a: {
     fontSize: 16,
-    color: '#2db6d9',
+    color: '#6cc166',
   },
 })
 
 const MainPage = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.h1}>{FireBaseApp.name}</Text>
+      <Text h1>{FireBaseApp.name}</Text>
       <Link to="/login">
         <Text style={styles.a}>Login</Text>
       </Link>
