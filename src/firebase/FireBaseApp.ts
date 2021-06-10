@@ -1,11 +1,6 @@
 import firebase from 'firebase/app'
 import Auth from './Auth'
-import Database from './Database'
-
-export interface UserCredentials {
-  email: string
-  password: string
-}
+import Database, { Collections, DataWriteProps } from './Database'
 
 class FireBaseApp {
   public readonly name = "Cook N' Plan"
@@ -23,13 +18,32 @@ class FireBaseApp {
 
   constructor() {
     this.#app = firebase.initializeApp(this.#config, this.name)
-    this.#auth = new Auth(this.#app)
     this.#database = new Database(this.#app)
+    this.#auth = new Auth(this.#app, this.#database)
   }
 
-  public signUp = (cred: UserCredentials) => this.#auth.signUp(cred)
+  public signUp = (cred: UserInfo) => this.#auth.signUp(cred)
   public signIn = (cred: UserCredentials) => this.#auth.signIn(cred)
   public signOut = () => this.#auth.signOut()
+  public write = (data: DataWriteProps) => this.#database.write(data)
+  public getDoc = (data: DataWriteProps) => this.#database.getDoc(data)
+  public getUserData = () => {
+    const user = this.#auth.getUser()
+    if (!user) return null
+    return this.getDoc({
+      collection: Collections.USERS,
+      data: {
+        id: user.uid,
+      },
+    })
+  }
 }
 
+export interface UserCredentials {
+  email: string
+  password: string
+}
+export interface UserInfo extends UserCredentials {
+  fullName: string
+}
 export default new FireBaseApp()
