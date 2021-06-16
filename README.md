@@ -1,8 +1,8 @@
 # Cook N' Plan
 ## Prerequisites
 
-* [Yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable)
 * [Node.js](https://nodejs.org/en/download/)
+* [Yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable)
 * [Expo](https://docs.expo.io/get-started/installation/)
 
 
