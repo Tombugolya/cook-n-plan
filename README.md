@@ -16,7 +16,7 @@ Install the dependencies using:
 
 
 ## Scripts
-### `expo start`
+### `yarn start`
 
 Starts Metro Bundler, which is an HTTP server that compiles the JavaScript code using Babel and serves it to the Expo app.
 
